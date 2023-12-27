@@ -2,10 +2,10 @@ import fetch from "node-fetch";
 import { Regions } from "../../interfaces/regions/Regions.js";
 import { env } from "../../../zod/index.js";
 import { Endpoints } from "../../endpoints/endpoints.js";
-import { Logger } from "../../base/logger.js";
 import { SummonerDTO } from "../../interfaces/summoner/SummonerDto.js";
 import { Response } from "../../interfaces/misc/Response.js";
-export class Summoner extends Logger {
+import { Match } from "../match/match-v5.js";
+export class Summoner extends Match {
   constructor() {
     super();
   }
@@ -30,7 +30,7 @@ export class Summoner extends Logger {
       }
     );
 
-    this.LogResponse(response);
+    this.LogResponse(response.status);
     return {
       status_code: response.status,
       data: (await response.json()),
@@ -54,7 +54,7 @@ export class Summoner extends Logger {
       }
     );
 
-    this.LogResponse(response);
+    this.LogResponse(response.status);
     return {
       status_code: response.status,
       data: (await response.json()),
@@ -78,7 +78,7 @@ export class Summoner extends Logger {
       }
     );
 
-    this.LogResponse(response);
+    this.LogResponse(response.status);
     return {
       status_code: response.status,
       data: (await response.json()),

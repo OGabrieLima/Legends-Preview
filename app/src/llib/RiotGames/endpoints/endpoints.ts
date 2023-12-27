@@ -29,8 +29,9 @@ export const Endpoints = {
   Match: {
     prefix: "lol/match",
     version: 5,
+    path: "matches",
     PUUID: {
       path: "matches/by-puuid"
-    }
+    },
   }
 }

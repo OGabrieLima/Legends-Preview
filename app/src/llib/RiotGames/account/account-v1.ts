@@ -33,7 +33,7 @@ export class Account extends Logger {
       }
     );
 
-    this.LogResponse(response);
+    this.LogResponse(response.status);
     return {
       status_code: response.status,
       data: (await response.json()),
@@ -57,7 +57,7 @@ export class Account extends Logger {
       }
     );
 
-    this.LogResponse(response);
+    this.LogResponse(response.status);
     return {
       status_code: response.status,
       data: (await response.json()),
@@ -81,7 +81,7 @@ export class Account extends Logger {
       }
     );
 
-    this.LogResponse(response);
+    this.LogResponse(response.status);
     return {
       status_code: response.status,
       data: (await response.json()),

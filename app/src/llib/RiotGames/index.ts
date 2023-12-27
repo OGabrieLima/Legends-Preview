@@ -1,5 +1,5 @@
 import { Account } from "./account/account-v1.js";
-import { Summoner } from "./LoL/Summoner/summoner-v1.js";
+import { Summoner } from "./LoL/Summoner/summoner-v4.js";
 
 export class RiotAPI{
   constructor() {

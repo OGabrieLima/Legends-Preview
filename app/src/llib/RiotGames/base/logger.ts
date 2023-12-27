@@ -9,10 +9,10 @@ export class Logger{
     console.info(`[${this.getTimeStamp}] 🔷 ${message}`);
   }
 
-  protected async LogResponse(response: Response) {
+  protected async LogResponse(status_code: number) {
     console.log(
       `${
-        response.status === 200
+        status_code === 200
           ? `[${this.getTimeStamp}] -> 🟩 Success`
           : `[${this.getTimeStamp}] -> 🟥 Failed`
       }`
