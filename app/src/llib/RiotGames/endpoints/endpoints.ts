@@ -2,9 +2,15 @@
 export const Endpoints = {
   Account: {
     prefix: "riot/account",
+    version: 1,
     riotID: {
       path: "accounts/by-riot-id",
-      version: 1,
+    },
+    PUUID: {
+      path: "accounts/by-puuid",
+    },
+    Shards: {
+      path: "active-shards/by-game",
     }
   }
 }

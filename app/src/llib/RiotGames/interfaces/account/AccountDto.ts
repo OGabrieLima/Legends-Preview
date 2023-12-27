@@ -1,4 +1,4 @@
-import { StatusError } from "../StatusError.js";
+import { StatusError } from "../misc/StatusError.js";
 
 export interface AccountDto {
   readonly puuid:           string;

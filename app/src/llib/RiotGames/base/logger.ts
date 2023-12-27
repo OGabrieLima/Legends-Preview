@@ -1,6 +1,4 @@
 import { Response } from "node-fetch";
-import { BaseAPI } from "./base.js";
-import { RiotAPI } from "../index.js";
 
 export class Logger{
   private get getTimeStamp() {
