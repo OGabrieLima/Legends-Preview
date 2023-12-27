@@ -5,12 +5,7 @@ const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('production'),
   
   /** Riot Games */
-  RIOT_TOKEN: z.string(),
-  // Endpoints
-  ENDPOINT_MATCH: z.string(),
-  ENDPOINT_SUMMONER: z.string(),
-  ENDPOINT_RIOT_ACCOUNT: z.string()
-
+  RIOT_TOKEN: z.string()
 });
 
 const _env = envSchema.safeParse(process.env);
