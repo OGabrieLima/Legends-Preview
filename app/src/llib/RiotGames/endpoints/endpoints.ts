@@ -12,5 +12,25 @@ export const Endpoints = {
     Shards: {
       path: "active-shards/by-game",
     }
+  },
+  Summoner: {
+    prefix: "lol/summoner",
+    version: 4,
+    AccountID: {
+      path: "summoners/by-account"
+    },
+    PUUID: {
+      path: "summoners/by-puuid"
+    },
+    SummonerID: {
+      path: "summoners"
+    }
+  },
+  Match: {
+    prefix: "lol/match",
+    version: 5,
+    PUUID: {
+      path: "matches/by-puuid"
+    }
   }
 }

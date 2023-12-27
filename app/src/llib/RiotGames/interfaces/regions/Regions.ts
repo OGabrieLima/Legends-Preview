@@ -1,5 +1,5 @@
 
-export declare enum Regions {
+export enum Regions {
   BRAZIL = "BR1",
   EU_EAST = "EUN1",
   EU_WEST = "EUW1",

@@ -1,26 +1,23 @@
 import fetch from "node-fetch";
-import { AccountSearch } from "../interfaces/account/AccountSearch.js";
-import { RegionGroup } from "../interfaces/regions/RegionGroup.js";
-import { env } from "../../zod/index.js";
-import { Endpoints } from "../endpoints/endpoints.js";
-import { Logger } from "../base/logger.js";
-import { AccountDto } from "../interfaces/account/AccountDto.js";
-import { GameAcron } from "../interfaces/misc/Game.js";
-import { Response } from "../interfaces/misc/Response.js";
-
-export class Account extends Logger {
+import { Regions } from "../../interfaces/regions/Regions.js";
+import { env } from "../../../zod/index.js";
+import { Endpoints } from "../../endpoints/endpoints.js";
+import { Logger } from "../../base/logger.js";
+import { SummonerDTO } from "../../interfaces/summoner/SummonerDto.js";
+import { Response } from "../../interfaces/misc/Response.js";
+export class Summoner extends Logger {
   constructor() {
     super();
   }
 
-  public async GetByRiotID(
-    { gameName, tagLine }: AccountSearch,
-    region: RegionGroup
+  public async GetByAccountID(
+    encryptedAccountId: string,
+    region: Regions
   ) {
-    this.LogInfo(`Riot: GetRiotAccountFromRiotID | ${gameName}#${tagLine}`);
+    this.LogInfo(`Riot: GetSummonerFromEncryptedAccountId | ${encryptedAccountId}`);
 
     const response = await fetch(
-      `https://${region}.api.riotgames.com/${Endpoints.Account.prefix}/v${Endpoints.Account.version}/${Endpoints.Account.riotID.path}/${gameName}/${tagLine}`,
+      `https://${region}.api.riotgames.com/${Endpoints.Summoner.prefix}/v${Endpoints.Summoner.version}/${Endpoints.Summoner.AccountID.path}/${encryptedAccountId}`,
       {
         headers: {
           "User-Agent":
@@ -37,14 +34,14 @@ export class Account extends Logger {
     return {
       status_code: response.status,
       data: (await response.json()),
-    } as Response<AccountDto>;
+    } as Response<SummonerDTO>;
   }
 
-  public async GetByPUUID(puuid: string, region: RegionGroup) {
+  public async GetByPUUID(puuid: string, region: Regions) {
     this.LogInfo(`Riot: GetRiotAccountFromPUUID | ${puuid}`);
 
     const response = await fetch(
-      `https://${region}.api.riotgames.com/${Endpoints.Account.prefix}/v${Endpoints.Account.version}/${Endpoints.Account.PUUID.path}/${puuid}`,
+      `https://${region}.api.riotgames.com/${Endpoints.Summoner.prefix}/v${Endpoints.Summoner.version}/${Endpoints.Summoner.PUUID.path}/${puuid}`,
       {
         headers: {
           "User-Agent":
@@ -61,14 +58,14 @@ export class Account extends Logger {
     return {
       status_code: response.status,
       data: (await response.json()),
-    } as Response<AccountDto>;
+    } as Response<SummonerDTO>;
   }
 
-  public async GetGameShard(game: GameAcron, puuid: string, region: RegionGroup) {
-    this.LogInfo(`Riot: GetRiotAccountFromPUUID | ${puuid}`);
+  public async GetBySummonerID(encryptedSummonerId: string, region: Regions) {
+    this.LogInfo(`Riot: GetRiotAccountFromEncryptedSummonerId | ${encryptedSummonerId}`);
 
     const response = await fetch(
-      `https://${region}.api.riotgames.com/${Endpoints.Account.prefix}/v${Endpoints.Account.version}/${Endpoints.Account.Shards.path}/${game}/by-puuid/${puuid}`,
+      `https://${region}.api.riotgames.com/${Endpoints.Summoner.prefix}/v${Endpoints.Summoner.version}/${Endpoints.Summoner.SummonerID.path}/${encryptedSummonerId}`,
       {
         headers: {
           "User-Agent":
@@ -85,6 +82,7 @@ export class Account extends Logger {
     return {
       status_code: response.status,
       data: (await response.json()),
-    } as Response<AccountDto>;
+    } as Response<SummonerDTO>;
   }
+
 }

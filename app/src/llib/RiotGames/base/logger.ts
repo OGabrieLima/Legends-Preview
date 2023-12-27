@@ -14,9 +14,7 @@ export class Logger{
       `${
         response.status === 200
           ? `[${this.getTimeStamp}] -> 🟩 Success`
-          : `[${this.getTimeStamp}] -> 🟥 Failed ${
-              ((await response.json()) as any).status.message
-            }`
+          : `[${this.getTimeStamp}] -> 🟥 Failed`
       }`
     );
   }

@@ -1,14 +1,18 @@
 import { Account } from "./account/account-v1.js";
-import { BaseAPI } from "./base/base.js";
+import { Summoner } from "./LoL/Summoner/summoner-v1.js";
 
-export class RiotAPI extends BaseAPI{
+export class RiotAPI{
   constructor() {
-    super();
     this.Account = new Account();
+    this.Summoner = new Summoner();
   }
 
   /**
    * Account v1 methods
    */
-  public Account;
+  public Account: Account;
+  /**
+   * Summoner v4 methods
+   */
+  public Summoner: Summoner;
 }
